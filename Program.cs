@@ -25,11 +25,42 @@ namespace PassKeeper
         }
     }
 
+    class Storage
+    {
+        string[] getPasswordList()
+        {
+            return new string[] {"Error, not implemented"};
+        }
+        string GetPassword(string serviceName, string encryptedUnlockSecret)
+        {
+            return "Error, method not yet implemented.";
+        }
+
+        void AddPassword(string serviceName, string encryptedServicePassword)
+        {
+
+        }
+
+        void UpdatePassword(string serviceName, string encryptedServicePassword, string encryptedUnlockSecret)
+        {
+
+        }
+
+        void DeletePassword(string serviceName, string encryptedUnlockSecret)
+        {
+
+        }
+
+    }
+
     public class Program
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("PassKeeper v0.1");
+            if(args.Length == 0)
+            {
+                Console.WriteLine("Error, required arguments missing.");
+            }
             Console.WriteLine("Press a key to exit...");
             Console.ReadKey();
         }
