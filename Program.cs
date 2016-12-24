@@ -5,27 +5,7 @@ using System.Threading.Tasks;
 
 namespace PassKeeper
 {
-    namespace EncryptDecrypt
-    {
-        class EncryptDecrypt
-        {
-
-            static void EncryptFile(string inputFile,
-            string outputFile,
-            string secretKey)
-            {
-
-            }
-            static void DecryptFile(string inputFile,
-                string outputFile,
-                string secretKey)
-            {
-
-            }
-        }
-    }
-
-    class Storage
+    class PassKeeper
     {
         string[] getPasswordList()
         {
@@ -54,15 +34,42 @@ namespace PassKeeper
 
     }
 
+    namespace EncryptDecrypt
+    {
+        class EncryptDecrypt
+        {
+
+            static void EncryptFile(string inputFile,
+            string outputFile,
+            string secretKey)
+            {
+
+            }
+            static void DecryptFile(string inputFile,
+                string outputFile,
+                string secretKey)
+            {
+
+            }
+        }
+    }
+
+
+
     public class Program
     {
         public static void Main(string[] args)
         {
-            if(args.Length == 0)
+            if(args.Length > 0)
             {
-                Console.WriteLine("Error, required arguments missing.");
+                string arg = "";
+                for (int i = 0, len = args.Length; i < len; i++)
+                {
+                    arg += args[i] + ", ";
+                }
+                Console.WriteLine("You supplied the following arguments:  {0}", arg);
             }
-            Console.WriteLine("Press a key to exit...");
+            Console.WriteLine("PassKeeper v0.1\nPress a key to exit...");
             Console.ReadKey();
         }
     }
