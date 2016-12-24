@@ -4,6 +4,26 @@
 
 Passkeeper is an application for storing passwords securely.
 
+## Prerequisites
+
+* .NET Core v1.1: https://www.microsoft.com/net/core
+
+## Getting Started
+
+Use the following commands to get started:
+
+```
+dotnet restore
+```
+
+```
+dotnet build
+```
+
+```
+dotnet run
+```
+
 ## Components
 
 ### Storage
