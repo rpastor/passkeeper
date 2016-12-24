@@ -31,6 +31,7 @@ namespace PassKeeper
         {
             return new string[] {"Error, not implemented"};
         }
+
         string GetPassword(string serviceName, string encryptedUnlockSecret)
         {
             return "Error, method not yet implemented.";
