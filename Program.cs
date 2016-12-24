@@ -9,7 +9,10 @@ namespace PassKeeper
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.Write("Enter Encryption Password: ");
+            string password = Console.ReadLine();
+            Console.WriteLine("Press a key to exit...");
+            Console.ReadKey();
         }
     }
 }
