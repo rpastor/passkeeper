@@ -18,7 +18,7 @@ Manages the storage for the application. Items contained in storage include:
 Features include:
 
 * List all stored service names
-* Retrieve a password for a give service
+* Retrieve a password for a given service
 * Store a new password
 
 ### Application Driver
