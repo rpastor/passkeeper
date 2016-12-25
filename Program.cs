@@ -9,17 +9,58 @@ namespace PassKeeper
     {
         public static void Main(string[] args)
         {
-            if(args.Length > 0)
+            try 
             {
-                string arg = "";
-                for (int i = 0, len = args.Length; i < len; i++)
-                {
-                    arg += args[i] + ", ";
-                }
-                Console.WriteLine("You supplied the following arguments:  {0}", arg);
+                var options = GetOptions(args);
+
+                // DEBUG
+                Console.WriteLine("Command: " + options.CommandType.ToString());
+
+                // TODO:
+                // Initialize Passkeeper and Storage
+                // Handle command
             }
-            Console.WriteLine("PassKeeper v0.1\nPress a key to exit...");
-            Console.ReadKey();
+            catch (Exception ex)
+            {
+                Usage();
+
+                Console.WriteLine();
+                Console.WriteLine("Exception Details: ---------------------------");
+                Console.WriteLine(ex.ToString());
+            }
+        }
+
+        private static ProgramOptions GetOptions(string[] args) 
+        {
+            var options = new ProgramOptions();
+            options.CommandType = GetCommandType(args[0]);
+
+            // TODO: Fill the rest of the options
+
+            return options;
+        }
+
+        private static CommandType GetCommandType(string command) 
+        {
+            switch (command.ToLower()) {
+                case "list":
+                    return CommandType.List;
+                case "add":
+                    return CommandType.Add;
+                case "get":
+                    return CommandType.Get;
+                case "update":
+                    return CommandType.Update;
+                case "delete":
+                    return CommandType.Delete;
+                default:
+                    throw new ArgumentException("Unrecognized command: " + command);
+            }
+        }
+
+        private static void Usage()
+        {
+            Console.WriteLine("Incorrect usage: refer to documentation.");
         }
     }
 }
