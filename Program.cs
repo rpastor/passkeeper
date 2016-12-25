@@ -5,57 +5,6 @@ using System.Threading.Tasks;
 
 namespace PassKeeper
 {
-    class PassKeeper
-    {
-        string[] getPasswordList()
-        {
-            return new string[] {"Error, not implemented"};
-        }
-
-        string GetPassword(string serviceName, string encryptedUnlockSecret)
-        {
-            return "Error, method not yet implemented.";
-        }
-
-        void AddPassword(string serviceName, string encryptedServicePassword)
-        {
-
-        }
-
-        void UpdatePassword(string serviceName, string encryptedServicePassword, string encryptedUnlockSecret)
-        {
-
-        }
-
-        void DeletePassword(string serviceName, string encryptedUnlockSecret)
-        {
-
-        }
-
-    }
-
-    namespace EncryptDecrypt
-    {
-        class EncryptDecrypt
-        {
-
-            static void EncryptFile(string inputFile,
-            string outputFile,
-            string secretKey)
-            {
-
-            }
-            static void DecryptFile(string inputFile,
-                string outputFile,
-                string secretKey)
-            {
-
-            }
-        }
-    }
-
-
-
     public class Program
     {
         public static void Main(string[] args)
