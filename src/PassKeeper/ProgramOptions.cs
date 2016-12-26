@@ -1,6 +1,6 @@
 namespace PassKeeper {
 
-    enum CommandType {
+    public enum CommandType {
         List,
         Add,
         Get,
@@ -8,7 +8,7 @@ namespace PassKeeper {
         Delete
     }
 
-    class ProgramOptions {
+    public class ProgramOptions {
         public CommandType CommandType { get; set; }
         public string ServiceName { get; set; }
         public string ServicePassword { get; set; }

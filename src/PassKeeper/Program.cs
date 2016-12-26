@@ -30,7 +30,7 @@ namespace PassKeeper
             }
         }
 
-        private static ProgramOptions GetOptions(string[] args) 
+        public static ProgramOptions GetOptions(string[] args) 
         {
             var options = new ProgramOptions();
             options.CommandType = GetCommandType(args[0]);
@@ -40,7 +40,7 @@ namespace PassKeeper
             return options;
         }
 
-        private static CommandType GetCommandType(string command) 
+        public static CommandType GetCommandType(string command) 
         {
             switch (command.ToLower()) {
                 case "list":
