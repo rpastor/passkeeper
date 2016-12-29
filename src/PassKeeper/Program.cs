@@ -19,14 +19,13 @@ namespace PassKeeper
                 // TODO:
                 // Initialize Passkeeper and Storage
                 // Handle command
+                Initialize();
             }
             catch (Exception ex)
             {
                 Usage();
 
-                Console.WriteLine();
-                Console.WriteLine("Exception Details: ---------------------------");
-                Console.WriteLine(ex.ToString());
+                LogExceptionToConsole(ex);
             }
         }
 
@@ -43,6 +42,8 @@ namespace PassKeeper
         public static CommandType GetCommandType(string command) 
         {
             switch (command.ToLower()) {
+                case "help":
+                    return CommandType.Help;
                 case "list":
                     return CommandType.List;
                 case "add":
@@ -61,6 +62,48 @@ namespace PassKeeper
         private static void Usage()
         {
             Console.WriteLine("Incorrect usage: refer to documentation.");
+        }
+
+        private static void LogExceptionToConsole(Exception e)
+        {
+            Console.WriteLine();
+            Console.WriteLine("Exception Details: ---------------------------");
+            Console.WriteLine(e.ToString());
+        }
+
+        private static void Initialize()
+        {
+            bool isWindows = false;
+            
+            // TODO:  Add other supported platforms.
+
+            isWindows = System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows);
+            // If Windows, check if %appdata%/PassKeeper directory exists.
+            if (isWindows)
+            {
+                try
+                {
+                    string dataPath = "";
+                    string passkeeperDataPath = "\\PassKeeper\\data";
+                    string appdata = Environment.GetEnvironmentVariable("APPDATA");
+
+                    dataPath = (appdata + passkeeperDataPath);
+
+                    if (System.IO.Directory.Exists(dataPath))
+                    {
+                        Console.WriteLine("Path exists at {0}.", dataPath);
+                        return;
+                    }
+
+                    System.IO.DirectoryInfo di = System.IO.Directory.CreateDirectory(dataPath);
+                    Console.WriteLine("Directory created at:  {0}.", System.IO.Directory.GetCreationTime(dataPath));
+                }
+                catch (Exception ex)
+                {
+                    // TODO: Handle the execeptions.
+                    LogExceptionToConsole(ex);
+                }
+            }
         }
     }
 }

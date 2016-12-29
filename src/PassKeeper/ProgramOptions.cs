@@ -1,6 +1,7 @@
 namespace PassKeeper {
 
     public enum CommandType {
+        Help,
         List,
         Add,
         Get,

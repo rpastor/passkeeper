@@ -7,6 +7,13 @@ namespace PassKeeper.Tests
     public class ProgramTests
     {
         [Fact]
+        public void should_resolve_help_command()
+        {
+            var cmd = Program.GetCommandType("help");
+            Assert.Equal(CommandType.Help, cmd);
+        }
+
+        [Fact]
         public void should_resolve_list_command() 
         {
             var cmd = Program.GetCommandType("list");            
