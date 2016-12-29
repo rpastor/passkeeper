@@ -20,6 +20,10 @@ namespace PassKeeper
                 // Initialize Passkeeper and Storage
                 // Handle command
                 Initialize();
+
+                // DEBUG
+                Console.WriteLine("DEBUG MSG: Press a key to exit...");
+                Console.ReadKey();
             }
             catch (Exception ex)
             {
@@ -73,30 +77,36 @@ namespace PassKeeper
 
         private static void Initialize()
         {
-            bool isWindows = false;
+            bool isWindows  = false;
+            bool isOSX      = false;
             
             // TODO:  Add other supported platforms.
 
-            isWindows = System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows);
+            isWindows   = System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows);
+            isOSX       = System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.OSX);
             // If Windows, check if %appdata%/PassKeeper directory exists.
             if (isWindows)
             {
                 try
                 {
-                    string dataPath = "";
-                    string passkeeperDataPath = "\\PassKeeper\\data";
-                    string appdata = Environment.GetEnvironmentVariable("APPDATA");
+                    string path = "";
+                    string appPath = "\\PassKeeper\\data";
+                    string basePath = Environment.GetEnvironmentVariable("APPDATA");
 
-                    dataPath = (appdata + passkeeperDataPath);
+                    path = (basePath + appPath);
 
-                    if (System.IO.Directory.Exists(dataPath))
+                    if (System.IO.Directory.Exists(path))
                     {
-                        Console.WriteLine("Path exists at {0}.", dataPath);
+                        // DEBUG
+                        Console.WriteLine("DEBUG MSG:\nPath already exists at {0}.", path);
+
                         return;
                     }
 
-                    System.IO.DirectoryInfo di = System.IO.Directory.CreateDirectory(dataPath);
-                    Console.WriteLine("Directory created at:  {0}.", System.IO.Directory.GetCreationTime(dataPath));
+                    System.IO.DirectoryInfo di = System.IO.Directory.CreateDirectory(path);
+
+                    // DEBUG
+                    Console.WriteLine("DEBUG MSG:\nDirectory created at:  {0}.", System.IO.Directory.GetCreationTime(path));
                 }
                 catch (Exception ex)
                 {

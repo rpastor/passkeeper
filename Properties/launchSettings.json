@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "passkeeper": {
+      "commandName": "Project",
+      "commandLineArgs": "help"
+    }
+  }
+}
