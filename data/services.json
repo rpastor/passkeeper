@@ -1,0 +1,30 @@
+﻿{
+  "Services": [
+    {
+      "Service Name 1": [
+        {
+          "URL": "null"
+        },
+        {
+          "USERID": "null"
+        },
+        {
+          "PASSWORD": "null"
+        }
+      ]
+    },
+    {
+      "Service Name 2": [
+        {
+          "URL": "null"
+        },
+        {
+          "USERID": "null"
+        },
+        {
+          "PASSWORD": "null"
+        }
+      ]
+    }
+  ]
+}
