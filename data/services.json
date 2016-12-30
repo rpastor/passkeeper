@@ -1,8 +1,7 @@
 ﻿{
-  "Services": [
-    {
-      "Service Name 1": [
-        {
+  "UnlockSecret" : "null",
+  "Services": [{
+      "Service Name 1": [{
           "URL": "null"
         },
         {
@@ -14,8 +13,7 @@
       ]
     },
     {
-      "Service Name 2": [
-        {
+      "Service Name 2": [{
           "URL": "null"
         },
         {
@@ -23,8 +21,6 @@
         },
         {
           "PASSWORD": "null"
-        }
-      ]
-    }
-  ]
+        }]
+    }]
 }
