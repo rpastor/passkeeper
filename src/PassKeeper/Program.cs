@@ -38,7 +38,21 @@ namespace PassKeeper
             var options = new ProgramOptions();
             options.CommandType = GetCommandType(args[0]);
 
-            // TODO: Fill the rest of the options
+            if (args.Length > 1) {
+                for (var i = 1; i < args.Length; i++) {
+                    switch (args[i]) {
+                        case "-s":
+                            options.ServiceName = args[++i];
+                            break;
+                        case "-p":
+                            options.ServicePassword = args[++i];
+                            break;
+                        case "-u":
+                            options.UnlockSecret = args[++i];
+                            break;
+                    }
+                }
+            }
 
             return options;
         }
