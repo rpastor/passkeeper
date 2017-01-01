@@ -46,6 +46,7 @@ namespace PassKeeper {
                 serviceName = serviceName,
                 password = encryptedServicePassword
             });
+            SaveFile();
         }
 
         public void UpdatePassword(string serviceName, string encryptedServicePassword, string encryptedUnlockSecret) {
