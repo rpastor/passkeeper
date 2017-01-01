@@ -6,31 +6,31 @@ namespace PassKeeper
     {
         private IStorage storage;
 
-        PassKeeper(IStorage storage) {
+        public PassKeeper(IStorage storage) {
             this.storage = storage;
         }
         
-        string[] GetPasswordList()
+        public string[] GetPasswordList()
         {
-            throw new NotImplementedException();
+            return storage.GetPasswordList();
         }
 
-        string GetPassword(string serviceName, string encryptedUnlockSecret)
+        public string GetPassword(string serviceName, string encryptedUnlockSecret)
         {
-            throw new NotImplementedException();
+            return storage.GetPassword(serviceName, encryptedUnlockSecret);
         }
 
-        void AddPassword(string serviceName, string encryptedServicePassword)
+        public void AddPassword(string serviceName, string encryptedServicePassword)
+        {
+            storage.AddPassword(serviceName, encryptedServicePassword);
+        }
+
+        public void UpdatePassword(string serviceName, string encryptedServicePassword, string encryptedUnlockSecret)
         {
 
         }
 
-        void UpdatePassword(string serviceName, string encryptedServicePassword, string encryptedUnlockSecret)
-        {
-
-        }
-
-        void DeletePassword(string serviceName, string encryptedUnlockSecret)
+        public void DeletePassword(string serviceName, string encryptedUnlockSecret)
         {
 
         }

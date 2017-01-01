@@ -2,7 +2,7 @@
   "profiles": {
     "passkeeper": {
       "commandName": "Project",
-      "commandLineArgs": "help"
+      "commandLineArgs": "add amazon"
     }
   }
 }

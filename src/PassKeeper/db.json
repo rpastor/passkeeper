@@ -1,0 +1,8 @@
+{
+    "unlockSecret": "my-encrypted-unlock-secret",
+    "passwords": [
+        { "serviceName": "amazon", "password": "my-encrypted-amazon-password" },
+        { "serviceName": "facebook", "password": "my-encrypted-facebook-password" },
+        { "serviceName": "gmail", "password": "my-encrypted-gmail-password" }
+    ]
+}

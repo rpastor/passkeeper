@@ -19,7 +19,35 @@ namespace PassKeeper
                 // TODO:
                 // Initialize Passkeeper and Storage
                 // Handle command
-                Initialize();
+                FileStorage storage = new FileStorage();
+                PassKeeper passkeeper = new PassKeeper(storage);
+
+                switch (options.CommandType)
+                {
+                    case CommandType.Help:
+                        Usage();
+                        break;
+                    case CommandType.List:
+                        string[] list = passkeeper.GetPasswordList();
+                        foreach (string serviceName in list)
+                        {
+                            Console.WriteLine(serviceName);
+                        }
+                        break;
+                    case CommandType.Add:
+                        passkeeper.AddPassword(options.ServiceName, options.ServicePassword);
+                        break;
+                    case CommandType.Get:
+                        string password = passkeeper.GetPassword(options.ServiceName, options.UnlockSecret);
+                        Console.WriteLine(password);
+                        break;
+                    //case "update":
+                    //    return CommandType.Update;
+                    //case "delete":
+                    //    return CommandType.Delete;
+                    default:
+                        throw new ArgumentException("Unrecognized command: " + options.CommandType);
+                }
 
                 // DEBUG
                 Console.WriteLine("DEBUG MSG: Press a key to exit...");
