@@ -7,7 +7,7 @@
         {
             "taskName": "build",
             "args": [
-                "${workspaceRoot}/project.json"
+                "${workspaceRoot}/src/PassKeeper/project.json"
             ],
             "isBuildCommand": true,
             "problemMatcher": "$msCompile"
