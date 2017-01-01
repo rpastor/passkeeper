@@ -1,7 +1,10 @@
 {
   "version": "1.0.0-*",
   "buildOptions": {
-    "debugType": "portable"
+    "debugType": "portable",
+    "copyToOutput": {
+      "include": "db.json"
+    }
   },
   "dependencies": {
     "System.Runtime.Serialization.Primitives": "4.3.0",

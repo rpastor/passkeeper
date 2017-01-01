@@ -3,14 +3,16 @@ using System.IO;
 using Newtonsoft.Json;
 using System.Linq;
 using System.Collections.Generic;
-using System.Dynamic;
+using System.Reflection;
 
 namespace PassKeeper {
     public class FileStorage : IStorage {
         private string fileName = "db.json";
+        private string fileDirectory = "";
         private StorageData data;
 
         public FileStorage() {
+            this.fileDirectory = Path.GetDirectoryName(this.GetType().GetTypeInfo().Assembly.Location);
             OpenFile();
         }
 
@@ -80,14 +82,24 @@ namespace PassKeeper {
             return service;
         }
 
-        private void OpenFile() {
-            var fileContent = System.IO.File.ReadAllText(this.fileName);
+        private string FullFilename
+        {
+            get 
+            {
+                return Path.Combine(this.fileDirectory, this.fileName);                
+            }
+        }
+
+        private void OpenFile() 
+        {
+            var fileContent = System.IO.File.ReadAllText(this.FullFilename);
             this.data = JsonConvert.DeserializeObject<StorageData>(fileContent);
         }
 
-        private void SaveFile() {
+        private void SaveFile() 
+        {
             var jsonString = JsonConvert.SerializeObject(this.data);
-            System.IO.File.WriteAllText(this.fileName, jsonString);
+            System.IO.File.WriteAllText(this.FullFilename, jsonString);
         }
     }
 }
