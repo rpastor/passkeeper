@@ -9,7 +9,8 @@
     "dotnet-test-xunit": "1.0.0-rc2-build10015",
     "PassKeeper": {
       "target": "project"
-    }
+    },
+    "CoreCompat.Newtonsoft.Json": "9.0.2-beta001"
   },
   "testRunner": "xunit",
   "frameworks": {
