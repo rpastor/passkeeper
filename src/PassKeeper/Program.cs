@@ -41,21 +41,23 @@ namespace PassKeeper
                         string password = passkeeper.GetPassword(options.ServiceName, options.UnlockSecret);
                         Console.WriteLine(password);
                         break;
-                    //case "update":
-                    //    return CommandType.Update;
-                    //case "delete":
-                    //    return CommandType.Delete;
+                    case CommandType.Update:
+                       passkeeper.UpdatePassword(options.ServiceName, options.ServicePassword, options.UnlockSecret);
+                       break;
+                    case CommandType.Delete:
+                       passkeeper.DeletePassword(options.ServiceName, options.UnlockSecret);
+                       break;
                     default:
                         throw new ArgumentException("Unrecognized command: " + options.CommandType);
                 }
 
                 // DEBUG
-                Console.WriteLine("DEBUG MSG: Press a key to exit...");
-                Console.ReadKey();
+                // Console.WriteLine("DEBUG MSG: Press a key to exit...");
+                // Console.ReadKey();
             }
             catch (Exception ex)
             {
-                Usage();
+                // Usage();
 
                 LogExceptionToConsole(ex);
             }

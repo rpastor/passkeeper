@@ -50,11 +50,28 @@ namespace PassKeeper {
         }
 
         public void UpdatePassword(string serviceName, string encryptedServicePassword, string encryptedUnlockSecret) {
-            throw new NotImplementedException();            
+            if (this.data.unlockSecret == encryptedUnlockSecret)
+            {
+                var service = GetPasswordFromDynamicWithException(serviceName);
+                service.password = encryptedServicePassword;
+            }      
+            else
+            {
+                throw new Exception("Unlock secret does not match");
+            }
+            SaveFile();
         }
 
         public void DeletePassword(string serviceName, string encryptedUnlockSecret)  {
-            throw new NotImplementedException();            
+            if (this.data.unlockSecret == encryptedUnlockSecret)
+            {
+                this.data.passwords.Remove(GetPasswordFromDynamicWithException(serviceName));
+            }      
+            else
+            {
+                throw new Exception("Unlock secret does not match");
+            }
+            SaveFile();
         }
 
         public dynamic GetPasswordFromDynamic(string serviceName)
