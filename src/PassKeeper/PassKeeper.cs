@@ -27,13 +27,12 @@ namespace PassKeeper
 
         public void UpdatePassword(string serviceName, string encryptedServicePassword, string encryptedUnlockSecret)
         {
-
+            storage.UpdatePassword(serviceName, encryptedServicePassword, encryptedUnlockSecret);
         }
 
         public void DeletePassword(string serviceName, string encryptedUnlockSecret)
         {
-
+            storage.DeletePassword(serviceName, encryptedUnlockSecret);
         }
-
     }
 }

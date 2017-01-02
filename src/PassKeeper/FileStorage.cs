@@ -26,14 +26,9 @@ namespace PassKeeper {
         }
 
         public string GetPassword(string serviceName, string encryptedUnlockSecret) {
-            if (this.data.unlockSecret == encryptedUnlockSecret)
-            {
-                return GetPasswordFromDynamicWithException(serviceName).password;
-            }      
-            else
-            {
-                throw new Exception("Unlock secret does not match");
-            }
+            this.VerifyUnlockSecret(encryptedUnlockSecret);
+
+            return GetPasswordFromDynamicWithException(serviceName).password;
         }
 
         public void AddPassword(string serviceName, string encryptedServicePassword) {
@@ -52,11 +47,21 @@ namespace PassKeeper {
         }
 
         public void UpdatePassword(string serviceName, string encryptedServicePassword, string encryptedUnlockSecret) {
-            throw new NotImplementedException();            
+            this.VerifyUnlockSecret(encryptedUnlockSecret);
+
+            var service = this.GetPasswordFromDynamicWithException(serviceName);
+            service.password = encryptedServicePassword;
+
+            SaveFile();
         }
 
         public void DeletePassword(string serviceName, string encryptedUnlockSecret)  {
-            throw new NotImplementedException();            
+            this.VerifyUnlockSecret(encryptedUnlockSecret);
+
+            var service = this.GetPasswordFromDynamicWithException(serviceName);
+            this.data.passwords.Remove(service);
+
+            SaveFile();          
         }
 
         public dynamic GetPasswordFromDynamic(string serviceName)
@@ -72,7 +77,7 @@ namespace PassKeeper {
             return null;
         }
 
-        public dynamic GetPasswordFromDynamicWithException(string serviceName)
+        public PasswordData GetPasswordFromDynamicWithException(string serviceName)
         {
             var service = GetPasswordFromDynamic(serviceName);
             if (service == null) {
@@ -80,6 +85,15 @@ namespace PassKeeper {
             }
 
             return service;
+        }
+
+        private void VerifyUnlockSecret(string unlockSecret)
+        {
+            if (this.data.unlockSecret != unlockSecret)
+            {
+                throw new Exception("Unlock secret does not match");
+            }
+            
         }
 
         private string FullFilename
