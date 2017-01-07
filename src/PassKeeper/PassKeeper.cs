@@ -17,17 +17,17 @@ namespace PassKeeper
 
         public string GetPassword(string serviceName, string encryptedUnlockSecret)
         {
-            return storage.GetPassword(serviceName, encryptedUnlockSecret);
+            return AesProvider.Decrypt(storage.GetPassword(serviceName, encryptedUnlockSecret));
         }
 
         public void AddPassword(string serviceName, string encryptedServicePassword)
         {
-            storage.AddPassword(serviceName, encryptedServicePassword);
+            storage.AddPassword(serviceName, AesProvider.Encrypt(encryptedServicePassword));
         }
 
         public void UpdatePassword(string serviceName, string encryptedServicePassword, string encryptedUnlockSecret)
         {
-            storage.UpdatePassword(serviceName, encryptedServicePassword, encryptedUnlockSecret);
+            storage.UpdatePassword(serviceName, AesProvider.Encrypt(encryptedServicePassword), encryptedUnlockSecret);
         }
 
         public void DeletePassword(string serviceName, string encryptedUnlockSecret)

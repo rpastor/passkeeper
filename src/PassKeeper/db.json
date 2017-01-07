@@ -1,1 +1,1 @@
-{"unlockSecret":"esp","passwords":[{"serviceName":"amazon","password":"my-encrypted-amazon-password"},{"serviceName":"facebook","password":"my-encrypted-facebook-password"},{"serviceName":"gmail","password":"my-encrypted-gmail-password"},{"serviceName":"github","password":"beppo"}]}
+{"unlockSecret":"esp","passwords":[{"serviceName":"amazon","password":"amazon--testpass"},{"serviceName":"facebook","password":"facebooktestpass"},{"serviceName":"gmail","password":"gmail---testpass"},{"serviceName":"github","password":"github--testpass"}]}
