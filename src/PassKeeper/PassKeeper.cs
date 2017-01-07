@@ -2,7 +2,7 @@ using System;
 
 namespace PassKeeper
 {
-    class PassKeeper
+    public class PassKeeper
     {
         private IStorage storage;
 

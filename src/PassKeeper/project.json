@@ -3,7 +3,7 @@
   "buildOptions": {
     "emitEntryPoint": true,
     "copyToOutput": {
-      "include": "db.json"
+      "include": "../../db.json"
     }
   },
 

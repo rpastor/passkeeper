@@ -1,5 +1,5 @@
 namespace PassKeeper {
-    interface IStorage {
+    public interface IStorage {
         string[] GetPasswordList();
 
         string GetPassword(string serviceName, string encryptedUnlockSecret);
