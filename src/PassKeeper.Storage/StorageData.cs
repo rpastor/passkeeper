@@ -6,9 +6,4 @@ namespace PassKeeper.Storage {
 
         public List<PasswordData> passwords { get; set; }
     }
-
-    public class PasswordData {
-        public string serviceName { get; set; }
-        public string password { get; set; }
-    }
 }
