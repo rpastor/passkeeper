@@ -1,6 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Mvc;
 using PassKeeper;
+using PassKeeper.Storage;
 
 namespace PassKeeper
 {
