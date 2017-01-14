@@ -5,7 +5,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace PassKeeper {
+namespace PassKeeper.Storage {
     public class FileStorage : IStorage {
         private string fileName = "db.json";
         private string fileDirectory = "";

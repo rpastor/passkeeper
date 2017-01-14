@@ -1,4 +1,5 @@
 using System;
+using PassKeeper.Storage;
 
 namespace PassKeeper
 {

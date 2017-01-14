@@ -1,4 +1,4 @@
-namespace PassKeeper {
+namespace PassKeeper.Storage {
     public interface IStorage {
         string[] GetPasswordList();
 

@@ -13,6 +13,9 @@
     "PassKeeper": {
       "target": "project"
     },
+    "PassKeeper.Storage": {
+      "target": "project"
+    },
     "CoreCompat.Newtonsoft.Json": "9.0.2-beta001"
   },
   "testRunner": "xunit",

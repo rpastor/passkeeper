@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace PassKeeper {
+namespace PassKeeper.Storage {
     public class StorageData {
         public string unlockSecret { get; set; }
 

@@ -1,6 +1,6 @@
 using System;
 using Xunit;
-using PassKeeper;
+using PassKeeper.Storage;
 
 namespace PassKeeper.Tests
 {
