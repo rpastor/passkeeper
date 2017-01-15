@@ -2,6 +2,7 @@ using System;
 using Microsoft.AspNetCore.Mvc;
 using PassKeeper;
 using PassKeeper.Storage;
+using PassKeeper.MongoDb;
 
 namespace PassKeeper
 {
@@ -50,7 +51,8 @@ namespace PassKeeper
 
         private PassKeeper GetPassKeeper()
         {
-            var storage = new FileStorage();
+//            var storage = new FileStorage();
+            var storage = new MongoStorage();
             return new PassKeeper(storage);
         }
     }
