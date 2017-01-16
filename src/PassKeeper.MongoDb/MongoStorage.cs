@@ -11,9 +11,9 @@ namespace PassKeeper.MongoDb
 {
     public class MongoStorage: IStorage
     {
-        //private string conString = @"mongodb://pkdb:cJe6VTwOKhv2AQQywWvbb7Ts1SUrgtDKtKdtlCeNQZ9e0ReZnf1DfgJDTcHeiOLj1D7UpMs5PUpQpjwJX1JDsQ==@pkdb.documents.azure.com:10250/?ssl=true&sslverifycertificate=false";
-        private string conString = @"mongodb://localhost:27017";
-        private string dbName = "local";
+        private string conString = @"mongodb://pkdb:cJe6VTwOKhv2AQQywWvbb7Ts1SUrgtDKtKdtlCeNQZ9e0ReZnf1DfgJDTcHeiOLj1D7UpMs5PUpQpjwJX1JDsQ==@pkdb.documents.azure.com:10250/?ssl=true&sslverifycertificate=false";
+        //private string conString = @"mongodb://localhost:27017";
+        private string dbName = "pkdb";
         private MongoClient client;
         private IMongoDatabase db;
 
