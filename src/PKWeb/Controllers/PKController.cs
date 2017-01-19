@@ -49,6 +49,22 @@ namespace PassKeeper
             passKeeper.DeletePassword(serviceName, uk);
         }
 
+        [Route("loginName/{serviceName}")]
+        [HttpGet]
+        public string GetLoginName(string serviceName, string uk)
+        {
+            var passKeeper = GetPassKeeper();
+            return passKeeper.GetLoginName(serviceName, uk);
+        }
+
+        [Route("sqa/{serviceName}")]
+        [HttpGet]
+        public string[] GetSecurityQuestionAnswers(string serviceName, string uk)
+        {
+            var passKeeper = GetPassKeeper();
+            return passKeeper.GetSecurityQuestionAnswers(serviceName, uk);
+        }
+
         private PassKeeper GetPassKeeper()
         {
 //            var storage = new FileStorage();
