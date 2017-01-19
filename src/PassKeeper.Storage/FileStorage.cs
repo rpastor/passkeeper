@@ -167,7 +167,7 @@ namespace PassKeeper.Storage {
             
             SaveFile();
         }
-        public string[] GetSecurityQuestionAnswer(string serviceName, string encryptedUnlockSecret)
+        public string[] GetSecurityQuestionAnswers(string serviceName, string encryptedUnlockSecret)
         {
             this.VerifyUnlockSecret(encryptedUnlockSecret);
             var questionList = new List<string>();

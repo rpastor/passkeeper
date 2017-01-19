@@ -62,7 +62,7 @@ namespace PassKeeper.Tests
             var storage = new FileStorage();
             storage.AddSecurityQuestionAnswer("amazon", "What\'s the name of the farm next to the Hill House?  \'I don\'t know.\'", this.unlockSecret);
 
-            var list = storage.GetSecurityQuestionAnswer("amazon",this.unlockSecret);
+            var list = storage.GetSecurityQuestionAnswers("amazon",this.unlockSecret);
             
             Assert.NotNull(list);
             Assert.Equal(1,list.Length);

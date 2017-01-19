@@ -12,8 +12,14 @@ namespace PassKeeper.Storage {
         
         void AddLoginName(string serviceName, string loginName, string encryptedUnlockSecret);
 
+        string GetLoginName(string serviceName, string encryptedUnlockSecret);
+
         void AddPasswordHint(string serviceName, string passwordHint, string encryptedUnlockSecret);
+
+        string GetPasswordHint(string serviceName, string encryptedUnlockSecret);
         
         void AddSecurityQuestionAnswer(string serviceName, string securityQuestionAnswer, string encryptedUnlockSecret);
+
+        string[] GetSecurityQuestionAnswers(string serviceName, string encryptedUnlockSecret);
     }
 }

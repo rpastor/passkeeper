@@ -115,6 +115,7 @@ namespace PassKeeper.MongoDb
             }
             
         }
+
         public void AddLoginName(string serviceName, string loginName, string encryptedUnlockSecret)
         {
             var profile = GetProfile();
@@ -123,6 +124,15 @@ namespace PassKeeper.MongoDb
             var existingService = GetPasswordFromProfileWithException(profile, serviceName);
             existingService.loginName = loginName;
         }
+
+        public string GetLoginName(string serviceName, string encryptedUnlockSecret)
+        {
+            var profile = GetProfile();
+            VerifyUnlockSecret(profile, encryptedUnlockSecret);
+
+            return GetPasswordFromProfileWithException(profile, serviceName).loginName;
+        }
+
         public void AddPasswordHint(string serviceName, string passwordHint, string encryptedUnlockSecret)
         {
             var profile = GetProfile();
@@ -132,6 +142,14 @@ namespace PassKeeper.MongoDb
             existingService.passwordHint = passwordHint;
         }
 
+        public string GetPasswordHint(string serviceName, string encryptedUnlockSecret)
+        {
+            var profile = GetProfile();
+            VerifyUnlockSecret(profile, encryptedUnlockSecret);
+
+            return GetPasswordFromProfileWithException(profile, serviceName).passwordHint;
+        }
+
         public void AddSecurityQuestionAnswer(string serviceName, string securityQuestionAnswer, string encryptedUnlockSecret)
         {
             var profile = GetProfile();
@@ -139,6 +157,14 @@ namespace PassKeeper.MongoDb
 
             var existingService = GetPasswordFromProfileWithException(profile, serviceName);
             existingService.securityQuestionAnswers.Add(securityQuestionAnswer); 
+        }
+
+        public string[] GetSecurityQuestionAnswers(string serviceName, string encryptedUnlockSecret)
+        {
+            var profile = GetProfile();
+            VerifyUnlockSecret(profile, encryptedUnlockSecret);
+
+            return GetPasswordFromProfileWithException(profile, serviceName).securityQuestionAnswers.ToArray();
         }
     }
 }
