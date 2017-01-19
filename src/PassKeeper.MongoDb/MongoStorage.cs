@@ -114,6 +114,31 @@ namespace PassKeeper.MongoDb
                 throw new Exception("Unlock secret does not match");
             }
             
-        }        
+        }
+        public void AddLoginName(string serviceName, string loginName, string encryptedUnlockSecret)
+        {
+            var profile = GetProfile();
+            VerifyUnlockSecret(profile, encryptedUnlockSecret);
+
+            var existingService = GetPasswordFromProfileWithException(profile, serviceName);
+            existingService.loginName = loginName;
+        }
+        public void AddPasswordHint(string serviceName, string passwordHint, string encryptedUnlockSecret)
+        {
+            var profile = GetProfile();
+            VerifyUnlockSecret(profile, encryptedUnlockSecret);
+
+            var existingService = GetPasswordFromProfileWithException(profile, serviceName);
+            existingService.passwordHint = passwordHint;
+        }
+
+        public void AddSecurityQuestionAnswer(string serviceName, string securityQuestionAnswer, string encryptedUnlockSecret)
+        {
+            var profile = GetProfile();
+            VerifyUnlockSecret(profile, encryptedUnlockSecret);
+
+            var existingService = GetPasswordFromProfileWithException(profile, serviceName);
+            existingService.securityQuestionAnswers.Add(securityQuestionAnswer); 
+        }
     }
 }

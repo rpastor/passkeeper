@@ -115,5 +115,68 @@ namespace PassKeeper.Storage {
             var jsonString = JsonConvert.SerializeObject(this.data);
             System.IO.File.WriteAllText(this.FullFilename, jsonString);
         }
+
+        public void AddLoginName(string serviceName, string loginName, string encryptedUnlockSecret)
+        {
+            this.VerifyUnlockSecret(encryptedUnlockSecret);
+
+            var service = this.GetPasswordFromDynamicWithException(serviceName);
+            service.loginName = loginName;
+
+            SaveFile();
+        }
+
+        public string GetLoginName(string serviceName, string encryptedUnlockSecret)
+        {
+            this.VerifyUnlockSecret(encryptedUnlockSecret);
+
+            return GetPasswordFromDynamicWithException(serviceName).loginName;
+        }
+
+        public void AddPasswordHint(string serviceName, string passwordHint, string encryptedUnlockSecret)
+        {
+            this.VerifyUnlockSecret(encryptedUnlockSecret);
+
+            var service = this.GetPasswordFromDynamicWithException(serviceName);
+            service.passwordHint = passwordHint;
+
+            SaveFile();
+        }
+        public string GetPasswordHint(string serviceName, string encryptedUnlockSecret)
+        {
+            this.VerifyUnlockSecret(encryptedUnlockSecret);
+
+            return GetPasswordFromDynamicWithException(serviceName).passwordHint;
+        }
+
+        public void AddSecurityQuestionAnswer(string serviceName, string securityQuestionAnswer, string encryptedUnlockSecret)
+        {
+            this.VerifyUnlockSecret(encryptedUnlockSecret);
+            
+            var service = this.GetPasswordFromDynamicWithException(serviceName);
+
+            if (service.securityQuestionAnswers == null) 
+            {
+                service.securityQuestionAnswers = new List<string>();
+                service.securityQuestionAnswers.Add(securityQuestionAnswer);
+            } 
+            else 
+            {
+                service.securityQuestionAnswers.Add(securityQuestionAnswer);
+            }
+            
+            SaveFile();
+        }
+        public string[] GetSecurityQuestionAnswer(string serviceName, string encryptedUnlockSecret)
+        {
+            this.VerifyUnlockSecret(encryptedUnlockSecret);
+            var questionList = new List<string>();
+            
+            foreach (var question in this.GetPasswordFromDynamicWithException(serviceName).securityQuestionAnswers)
+            {
+                questionList.Add(question.ToString());
+            }
+            return questionList.ToArray();
+        }
     }
 }

@@ -38,5 +38,35 @@ namespace PassKeeper.Tests
 
             Assert.Equal("new-password", storage.GetPassword("new-service", this.unlockSecret));
         }
+
+        [Fact]
+        public void should_add_loginName_to_list()
+        {
+            var storage = new FileStorage();
+            storage.AddLoginName("amazon", "amazon-loginName", this.unlockSecret);
+
+            Assert.Equal("amazon-loginName", storage.GetLoginName("amazon", this.unlockSecret));         
+        }
+
+        [Fact]
+        public void should_add_passwordHint_to_list()
+        {
+            var storage = new FileStorage();
+            storage.AddPasswordHint("amazon", "amazon-password-hint", this.unlockSecret);
+
+            Assert.Equal("amazon-password-hint", storage.GetPasswordHint("amazon",this.unlockSecret));
+        }
+        [Fact]
+        public void should_add_security_question_answer_to_list()
+        {
+            var storage = new FileStorage();
+            storage.AddSecurityQuestionAnswer("amazon", "What\'s the name of the farm next to the Hill House?  \'I don\'t know.\'", this.unlockSecret);
+
+            var list = storage.GetSecurityQuestionAnswer("amazon",this.unlockSecret);
+            
+            Assert.NotNull(list);
+            Assert.Equal(1,list.Length);
+            Assert.Equal("What\'s the name of the farm next to the Hill House?  \'I don\'t know.\'", list[0]);
+        }
     }
 }
